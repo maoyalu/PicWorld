@@ -17,6 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let tabBarController = self.window!.rootViewController as! UITabBarController
+        let mapViewController = tabBarController.viewControllers?[0] as! MapViewController
+        let navigationController = tabBarController.viewControllers?[1] as! UINavigationController
+        let locationTableViewController = navigationController.viewControllers.first as! LocationTableViewController
+        locationTableViewController.mapViewController = mapViewController
+        
+//        let mapVC = MapViewController()
+//        let locationTVC = LocationTableViewController()
+//
+//        let tabBarController = AppTabBarController()
+//        tabBarController.viewControllers = [mapVC, locationTVC]
+//        tabBarController.selectedIndex = 0
+        
+        
         return true
     }
 

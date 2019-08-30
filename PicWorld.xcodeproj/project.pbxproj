@@ -8,22 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		3EA18C4C2314252E00AA0B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C4B2314252E00AA0B22 /* AppDelegate.swift */; };
-		3EA18C4E2314252E00AA0B22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C4D2314252E00AA0B22 /* ViewController.swift */; };
 		3EA18C512314252E00AA0B22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA18C4F2314252E00AA0B22 /* Main.storyboard */; };
 		3EA18C542314252E00AA0B22 /* PicWorld.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C522314252E00AA0B22 /* PicWorld.xcdatamodeld */; };
 		3EA18C562314252E00AA0B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EA18C552314252E00AA0B22 /* Assets.xcassets */; };
 		3EA18C592314252E00AA0B22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EA18C572314252E00AA0B22 /* LaunchScreen.storyboard */; };
+		3EA18C61231425E800AA0B22 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C60231425E800AA0B22 /* MapViewController.swift */; };
+		3EA18C632314287500AA0B22 /* LocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C622314287500AA0B22 /* LocationAnnotation.swift */; };
+		3EA18C652316347C00AA0B22 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */; };
+		3EA18C67231634FD00AA0B22 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */; };
+		3EA18C6923178BEE00AA0B22 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3EA18C482314252E00AA0B22 /* PicWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA18C4B2314252E00AA0B22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3EA18C4D2314252E00AA0B22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EA18C502314252E00AA0B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EA18C532314252E00AA0B22 /* PicWorld.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PicWorld.xcdatamodel; sourceTree = "<group>"; };
 		3EA18C552314252E00AA0B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EA18C582314252E00AA0B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EA18C5A2314252E00AA0B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EA18C60231425E800AA0B22 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3EA18C622314287500AA0B22 /* LocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAnnotation.swift; sourceTree = "<group>"; };
+		3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
+		3EA18C902317CD1000AA0B22 /* Monash University - Caulfield.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Monash University - Caulfield.gpx"; path = "../../Downloads/Monash University - Caulfield.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,7 @@
 		3EA18C3F2314252E00AA0B22 = {
 			isa = PBXGroup;
 			children = (
+				3EA18C902317CD1000AA0B22 /* Monash University - Caulfield.gpx */,
 				3EA18C4A2314252E00AA0B22 /* PicWorld */,
 				3EA18C492314252E00AA0B22 /* Products */,
 			);
@@ -57,12 +67,16 @@
 			isa = PBXGroup;
 			children = (
 				3EA18C4B2314252E00AA0B22 /* AppDelegate.swift */,
-				3EA18C4D2314252E00AA0B22 /* ViewController.swift */,
 				3EA18C4F2314252E00AA0B22 /* Main.storyboard */,
 				3EA18C552314252E00AA0B22 /* Assets.xcassets */,
 				3EA18C572314252E00AA0B22 /* LaunchScreen.storyboard */,
 				3EA18C5A2314252E00AA0B22 /* Info.plist */,
 				3EA18C522314252E00AA0B22 /* PicWorld.xcdatamodeld */,
+				3EA18C60231425E800AA0B22 /* MapViewController.swift */,
+				3EA18C622314287500AA0B22 /* LocationAnnotation.swift */,
+				3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */,
+				3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */,
+				3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */,
 			);
 			path = PicWorld;
 			sourceTree = "<group>";
@@ -139,8 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EA18C542314252E00AA0B22 /* PicWorld.xcdatamodeld in Sources */,
-				3EA18C4E2314252E00AA0B22 /* ViewController.swift in Sources */,
+				3EA18C652316347C00AA0B22 /* LocationTableViewCell.swift in Sources */,
+				3EA18C6923178BEE00AA0B22 /* NewLocationViewController.swift in Sources */,
+				3EA18C67231634FD00AA0B22 /* LocationTableViewController.swift in Sources */,
+				3EA18C61231425E800AA0B22 /* MapViewController.swift in Sources */,
 				3EA18C4C2314252E00AA0B22 /* AppDelegate.swift in Sources */,
+				3EA18C632314287500AA0B22 /* LocationAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
