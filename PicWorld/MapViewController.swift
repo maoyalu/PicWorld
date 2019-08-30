@@ -20,7 +20,6 @@ class MapViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let location = LocationAnnotation(newTitle: "Flinders St", newSubtitle: "Flinders Street station", lat: -37.8183, long: 144.9671)
-        mapView.addAnnotation(location)
         focusOn(annotation: location)
         mapView.showsUserLocation = true
     }
@@ -28,7 +27,7 @@ class MapViewController: UIViewController {
     func focusOn(annotation: MKAnnotation){
         mapView.selectAnnotation(annotation, animated: true)
         
-        let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        let zoomRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(mapView.regionThatFits(zoomRegion), animated: true)
     }
     
