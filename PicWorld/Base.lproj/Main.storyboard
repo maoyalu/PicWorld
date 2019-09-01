@@ -13,13 +13,14 @@
         <!--New Location-->
         <scene sceneID="Wgx-Qa-1K1">
             <objects>
-                <viewController title="New Location" id="93C-9L-pRu" customClass="NewLocationViewController" customModule="PicWorld" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="New Location" hidesBottomBarWhenPushed="YES" id="93C-9L-pRu" customClass="NewLocationViewController" customModule="PicWorld" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1rm-cw-yAa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2y-Kk-u93">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S2y-Kk-u93">
                                 <rect key="frame" x="16" y="104" width="382" height="215"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S2y-Kk-u93" secondAttribute="height" multiplier="16:9" id="05T-RP-uuR"/>
                                 </constraints>
@@ -30,6 +31,9 @@
                                 <state key="normal" title="Camera">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="93C-9L-pRu" eventType="touchUpInside" id="zTn-dW-ndB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfR-tS-VZw">
                                 <rect key="frame" x="215" y="335" width="183" height="30"/>
@@ -37,6 +41,9 @@
                                 <state key="normal" title="Library">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="usePhotoLibrary:" destination="93C-9L-pRu" eventType="touchUpInside" id="tWZ-04-WzY"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-cK-WPC">
                                 <rect key="frame" x="16" y="381" width="45" height="21"/>
@@ -74,6 +81,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGs-tn-6Wp">
+                                <rect key="frame" x="215" y="584" width="82" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9f-7P-GN1">
                                 <rect key="frame" x="100" y="584" width="11" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -92,17 +105,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGs-tn-6Wp">
-                                <rect key="frame" x="215" y="584" width="82" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nVo-aF-Ih1">
+                                <rect key="frame" x="16" y="658" width="382" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qh5-cK-WPC" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="1Kd-S1-L50"/>
                             <constraint firstItem="cXe-wD-Wpk" firstAttribute="trailing" secondItem="MfR-tS-VZw" secondAttribute="trailing" constant="16" id="3a3-fB-ANj"/>
+                            <constraint firstItem="cXe-wD-Wpk" firstAttribute="trailing" secondItem="nVo-aF-Ih1" secondAttribute="trailing" constant="16" id="3vf-Y2-qTV"/>
                             <constraint firstItem="qh5-cK-WPC" firstAttribute="top" secondItem="Vhz-No-jlm" secondAttribute="bottom" constant="16" id="4WZ-bV-mG7"/>
                             <constraint firstItem="IgT-hg-AMg" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="4jy-Gj-ZVN"/>
                             <constraint firstItem="C9f-7P-GN1" firstAttribute="leading" secondItem="mNv-3Y-Mqd" secondAttribute="trailing" constant="16" id="63Y-ZU-Lp2"/>
@@ -121,9 +136,11 @@
                             <constraint firstItem="Vhz-No-jlm" firstAttribute="top" secondItem="S2y-Kk-u93" secondAttribute="bottom" constant="16" id="Xao-rX-IFX"/>
                             <constraint firstItem="mNv-3Y-Mqd" firstAttribute="top" secondItem="IgT-hg-AMg" secondAttribute="bottom" constant="16" id="ZQw-09-VCP"/>
                             <constraint firstItem="bzh-Ds-YDq" firstAttribute="top" secondItem="qh5-cK-WPC" secondAttribute="bottom" constant="16" id="ZT6-Tb-8dN"/>
+                            <constraint firstItem="nVo-aF-Ih1" firstAttribute="top" secondItem="CaI-zl-qC8" secondAttribute="bottom" constant="16" id="a6o-T1-cMi"/>
                             <constraint firstItem="0SF-fl-q1e" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="caD-sM-xJC"/>
                             <constraint firstItem="C9f-7P-GN1" firstAttribute="top" secondItem="mNv-3Y-Mqd" secondAttribute="top" id="eR1-fh-NAl"/>
                             <constraint firstItem="S2y-Kk-u93" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="f6R-qz-vgo"/>
+                            <constraint firstItem="nVo-aF-Ih1" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="o6v-sS-Bh9"/>
                             <constraint firstItem="4zW-xf-B8p" firstAttribute="leading" secondItem="pGs-tn-6Wp" secondAttribute="trailing" constant="16" id="pwi-zw-vrw"/>
                             <constraint firstItem="MfR-tS-VZw" firstAttribute="leading" secondItem="Vhz-No-jlm" secondAttribute="trailing" constant="16" id="qvY-FM-Ux0"/>
                             <constraint firstItem="CaI-zl-qC8" firstAttribute="leading" secondItem="cXe-wD-Wpk" secondAttribute="leading" constant="16" id="r3B-a2-ZhO"/>
@@ -135,6 +152,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cXe-wD-Wpk"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Location" id="2Oj-7J-5PZ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="eIU-lT-haZ">
+                            <connections>
+                                <action selector="saveLocation:" destination="93C-9L-pRu" id="WnM-rM-W6c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptTextField" destination="0SF-fl-q1e" id="jrw-lf-bzC"/>
+                        <outlet property="imageView" destination="S2y-Kk-u93" id="vJv-nW-gfm"/>
+                        <outlet property="latitudeTextField" destination="C9f-7P-GN1" id="pTG-tl-2ul"/>
+                        <outlet property="longitudeTextField" destination="4zW-xf-B8p" id="HBw-AG-Hiq"/>
+                        <outlet property="mapIconChoiceField" destination="nVo-aF-Ih1" id="tVm-JY-afr"/>
+                        <outlet property="nameTextField" destination="bzh-Ds-YDq" id="hEP-ua-jby"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfx-fr-Vxw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

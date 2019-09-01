@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var databaseController: DatabaseProtocol?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -24,13 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let locationTableViewController = navigationController.viewControllers.first as! LocationTableViewController
         locationTableViewController.mapViewController = mapViewController
         
-//        let mapVC = MapViewController()
-//        let locationTVC = LocationTableViewController()
-//
-//        let tabBarController = AppTabBarController()
-//        tabBarController.viewControllers = [mapVC, locationTVC]
-//        tabBarController.selectedIndex = 0
-        
+        databaseController = CoreDataController()
         
         return true
     }

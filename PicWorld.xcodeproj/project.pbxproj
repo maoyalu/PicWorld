@@ -17,6 +17,11 @@
 		3EA18C652316347C00AA0B22 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */; };
 		3EA18C67231634FD00AA0B22 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */; };
 		3EA18C6923178BEE00AA0B22 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */; };
+		3EA18C97231AB2F400AA0B22 /* Location+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C95231AB2F400AA0B22 /* Location+CoreDataClass.swift */; };
+		3EA18C98231AB2F400AA0B22 /* Location+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C96231AB2F400AA0B22 /* Location+CoreDataProperties.swift */; };
+		3EA18C9B231AB36600AA0B22 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9A231AB36600AA0B22 /* DatabaseProtocol.swift */; };
+		3EA18C9D231AB59200AA0B22 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9C231AB59200AA0B22 /* CoreDataController.swift */; };
+		3EA18C9F231AC0DC00AA0B22 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9E231AC0DC00AA0B22 /* MulticastDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,11 @@
 		3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		3EA18C902317CD1000AA0B22 /* Monash University - Caulfield.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Monash University - Caulfield.gpx"; path = "../../Downloads/Monash University - Caulfield.gpx"; sourceTree = "<group>"; };
+		3EA18C95231AB2F400AA0B22 /* Location+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3EA18C96231AB2F400AA0B22 /* Location+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3EA18C9A231AB36600AA0B22 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		3EA18C9C231AB59200AA0B22 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		3EA18C9E231AC0DC00AA0B22 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +76,13 @@
 		3EA18C4A2314252E00AA0B22 /* PicWorld */ = {
 			isa = PBXGroup;
 			children = (
+				3EA18C99231AB34B00AA0B22 /* Database */,
+				3EA18C91231A138500AA0B22 /* DataModel */,
 				3EA18C4B2314252E00AA0B22 /* AppDelegate.swift */,
 				3EA18C4F2314252E00AA0B22 /* Main.storyboard */,
 				3EA18C552314252E00AA0B22 /* Assets.xcassets */,
 				3EA18C572314252E00AA0B22 /* LaunchScreen.storyboard */,
 				3EA18C5A2314252E00AA0B22 /* Info.plist */,
-				3EA18C522314252E00AA0B22 /* PicWorld.xcdatamodeld */,
 				3EA18C60231425E800AA0B22 /* MapViewController.swift */,
 				3EA18C622314287500AA0B22 /* LocationAnnotation.swift */,
 				3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */,
@@ -79,6 +90,26 @@
 				3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */,
 			);
 			path = PicWorld;
+			sourceTree = "<group>";
+		};
+		3EA18C91231A138500AA0B22 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				3EA18C95231AB2F400AA0B22 /* Location+CoreDataClass.swift */,
+				3EA18C96231AB2F400AA0B22 /* Location+CoreDataProperties.swift */,
+				3EA18C522314252E00AA0B22 /* PicWorld.xcdatamodeld */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		3EA18C99231AB34B00AA0B22 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				3EA18C9A231AB36600AA0B22 /* DatabaseProtocol.swift */,
+				3EA18C9C231AB59200AA0B22 /* CoreDataController.swift */,
+				3EA18C9E231AC0DC00AA0B22 /* MulticastDelegate.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,9 +187,14 @@
 				3EA18C652316347C00AA0B22 /* LocationTableViewCell.swift in Sources */,
 				3EA18C6923178BEE00AA0B22 /* NewLocationViewController.swift in Sources */,
 				3EA18C67231634FD00AA0B22 /* LocationTableViewController.swift in Sources */,
+				3EA18C9B231AB36600AA0B22 /* DatabaseProtocol.swift in Sources */,
+				3EA18C97231AB2F400AA0B22 /* Location+CoreDataClass.swift in Sources */,
+				3EA18C9D231AB59200AA0B22 /* CoreDataController.swift in Sources */,
+				3EA18C98231AB2F400AA0B22 /* Location+CoreDataProperties.swift in Sources */,
 				3EA18C61231425E800AA0B22 /* MapViewController.swift in Sources */,
 				3EA18C4C2314252E00AA0B22 /* AppDelegate.swift in Sources */,
 				3EA18C632314287500AA0B22 /* LocationAnnotation.swift in Sources */,
+				3EA18C9F231AC0DC00AA0B22 /* MulticastDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
