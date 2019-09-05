@@ -2,7 +2,7 @@
 //  Location+CoreDataProperties.swift
 //  PicWorld
 //
-//  Created by Lu Yang on 31/8/19.
+//  Created by Lu Yang on 2/9/19.
 //  Copyright © 2019 Lu Yang. All rights reserved.
 //
 //
@@ -22,5 +22,6 @@ extension Location {
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
     @NSManaged public var imageFilename: String?
+    @NSManaged public var iconFilename: String?
 
 }

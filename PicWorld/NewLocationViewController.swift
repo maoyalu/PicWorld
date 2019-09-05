@@ -13,16 +13,26 @@ protocol NewLocationDelegate {
     func locationAnnotationAdded(annotation: LocationAnnotation)
 }
 
-class NewLocationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class NewLocationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
     weak var delegate: LocationTableViewController?
     weak var databaseController: DatabaseProtocol?
+    var locationManager = CLLocationManager()
+    var currentLocation: CLLocationCoordinate2D?
 
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptTextField: UITextField!
-    @IBOutlet weak var latitudeTextField: UILabel!
-    @IBOutlet weak var longitudeTextField: UILabel!
-    @IBOutlet weak var mapIconChoiceField: UISegmentedControl!
+    @IBOutlet weak var latitudeLabel: UILabel!
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var iconLabel: UILabel!
+    @IBOutlet weak var iconChoiceField: UISegmentedControl!
+    
+    let icons = ["Default", "Favourite", "Heritage", "Musicals", "Arts"]
+    
+    @IBAction func chooseIcon(_ sender: Any) {
+        iconLabel.text = icons[iconChoiceField.selectedSegmentIndex]
+    }
     
     
     @IBAction func takePhoto(_ sender: Any) {
@@ -66,15 +76,39 @@ class NewLocationViewController: UIViewController, UIImagePickerControllerDelega
         
         if nameTextField.text == "" {
             displayMessage("Name cannot be empty", "Error")
+        } else if longitudeLabel.text == "N/A" || latitudeLabel.text == "N/A"{
+            displayMessage("Location cannot be empty", "Error")
         } else {
             let name = nameTextField.text!
             let descript = descriptTextField.text!
-            let latitude = Double(latitudeTextField.text!)  ?? 0
-            let longtitude = Double(longitudeTextField.text!) ?? 0
+            let latitude = Double(latitudeLabel.text!)  ?? 0
+            let longtitude = Double(longitudeLabel.text!) ?? 0
             let imageFilename = "\(date)"
+            let iconFilename = icons[iconChoiceField.selectedSegmentIndex]
             
-            let _ = databaseController?.addLocation(name: name, descript: descript, latitude: latitude, longitude: longtitude, imageFilename: imageFilename)
+            let _ = databaseController?.addLocation(name: name, descript: descript, latitude: latitude, longitude: longtitude, imageFilename: imageFilename, iconFilename: iconFilename)
+            
+            navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @IBAction func useCurrentLocation(_ sender: Any) {
+        if let currentLocation = currentLocation {
+            latitudeLabel.text = String(format: "%.6f", currentLocation.latitude)
+            longitudeLabel.text = String(format: "%.6f", currentLocation.longitude)
+        } else {
+            displayMessage("Cannot get current location", "Error")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        locationManager.startUpdatingLocation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        locationManager.startUpdatingLocation()
     }
     
     override func viewDidLoad() {
@@ -86,6 +120,16 @@ class NewLocationViewController: UIViewController, UIImagePickerControllerDelega
         
         nameTextField.delegate = self
         descriptTextField.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last!
+        currentLocation = location.coordinate
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

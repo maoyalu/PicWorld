@@ -13,10 +13,13 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     
     var listenerType = ListenerType.location
     var mapViewController: MapViewController?
+    private let locationManager = CLLocationManager()
     var locationList = [Location]()
     var filteredLocationList = [Location]()
     weak var databaseController: DatabaseProtocol?
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -88,11 +91,12 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell", for: indexPath) as! LocationTableViewCell
         let annotation = self.locationList[indexPath.row]
         
-        cell.textLabel?.text = annotation.name
-        cell.detailTextLabel?.text = "Lat: \(annotation.latitude) Long: \(annotation.longitude)"
+        cell.iconImageView.image = UIImage(named: annotation.iconFilename ?? "Default")
+        cell.nameLabel.text = annotation.name
+        cell.descriptLabel.text = annotation.descript
 
         return cell
     }
@@ -101,7 +105,7 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tabBarController?.selectedIndex = 0
         let location = locationList[indexPath.row]
-        let annotation = LocationAnnotation(newTitle: location.name!, newSubtitle: location.descript!, lat: location.latitude, long: location.longitude)
+        let annotation = LocationAnnotation(newTitle: location.name!, newSubtitle: location.descript!, lat: location.latitude, long: location.longitude, image: location.imageFilename!, icon: location.iconFilename!)
         mapViewController?.focusOn(annotation: annotation)
     }
     
@@ -119,6 +123,12 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
         if editingStyle == .delete {
             // Delete the row from the data source
             let location = locationList[indexPath.row]
+            
+            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            let geoLocation = CLCircularRegion(center: coordinate, radius: 500, identifier: location.name!)
+            geoLocation.notifyOnEntry = true
+            locationManager.stopMonitoring(for: geoLocation)
+            
             databaseController?.deleteLocation(location: location)
             locationList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -155,4 +165,8 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
 
+}
+
+extension LocationTableViewController: CLLocationManagerDelegate{
+    
 }

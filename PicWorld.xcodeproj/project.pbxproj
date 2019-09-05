@@ -22,6 +22,7 @@
 		3EA18C9B231AB36600AA0B22 /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9A231AB36600AA0B22 /* DatabaseProtocol.swift */; };
 		3EA18C9D231AB59200AA0B22 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9C231AB59200AA0B22 /* CoreDataController.swift */; };
 		3EA18C9F231AC0DC00AA0B22 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18C9E231AC0DC00AA0B22 /* MulticastDelegate.swift */; };
+		3EA18CA1231CCCC400AA0B22 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA18CA0231CCCC400AA0B22 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		3EA18C9A231AB36600AA0B22 /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
 		3EA18C9C231AB59200AA0B22 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 		3EA18C9E231AC0DC00AA0B22 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		3EA18CA0231CCCC400AA0B22 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				3EA18C642316347C00AA0B22 /* LocationTableViewCell.swift */,
 				3EA18C66231634FD00AA0B22 /* LocationTableViewController.swift */,
 				3EA18C6823178BEE00AA0B22 /* NewLocationViewController.swift */,
+				3EA18CA0231CCCC400AA0B22 /* DetailViewController.swift */,
 			);
 			path = PicWorld;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA18CA1231CCCC400AA0B22 /* DetailViewController.swift in Sources */,
 				3EA18C542314252E00AA0B22 /* PicWorld.xcdatamodeld in Sources */,
 				3EA18C652316347C00AA0B22 /* LocationTableViewCell.swift in Sources */,
 				3EA18C6923178BEE00AA0B22 /* NewLocationViewController.swift in Sources */,

@@ -8,26 +8,48 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var databaseController: DatabaseProtocol?
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         let tabBarController = self.window!.rootViewController as! UITabBarController
-        let mapViewController = tabBarController.viewControllers?[0] as! MapViewController
-        let navigationController = tabBarController.viewControllers?[1] as! UINavigationController
-        let locationTableViewController = navigationController.viewControllers.first as! LocationTableViewController
+        let navigationControllerMap = tabBarController.viewControllers?[0] as! UINavigationController
+        let mapViewController = navigationControllerMap.viewControllers.first as! MapViewController
+        let navigationControllerList = tabBarController.viewControllers?[1] as! UINavigationController
+        let locationTableViewController = navigationControllerList.viewControllers.first as! LocationTableViewController
         locationTableViewController.mapViewController = mapViewController
         
         databaseController = CoreDataController()
         
+        let options: UNAuthorizationOptions = [.alert, .badge, .sound]
+        notificationCenter.requestAuthorization(options: options){
+            (didAllow, error) in
+            if !didAllow{
+                print("Error: Notification is not enbled.")
+            }
+        }
+        
         return true
+    }
+    
+    func scheduleNotification(title: String, body: String){
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = body
+        
+        //        let trigger = UNLocationNotificationTrigger(region: geoLocation, repeats: true)
+        let trigger =  UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+        let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

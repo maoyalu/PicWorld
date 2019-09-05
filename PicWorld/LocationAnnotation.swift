@@ -13,11 +13,15 @@ class LocationAnnotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
+    var imageFilename: String?
+    var iconFilename: String?
     
-    init(newTitle: String, newSubtitle: String, lat: Double, long: Double){
-        self.title = newTitle
-        self.subtitle = newSubtitle
+    init(newTitle: String, newSubtitle: String, lat: Double, long: Double, image: String, icon: String){
+        title = newTitle
+        subtitle = newSubtitle
         coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        imageFilename = image
+        iconFilename = icon
     }
 
 }

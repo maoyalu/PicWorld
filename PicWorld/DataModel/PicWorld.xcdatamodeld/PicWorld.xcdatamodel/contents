@@ -2,12 +2,13 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Location" representedClassName="Location" syncable="YES">
         <attribute name="descript" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-45" positionY="0" width="128" height="120"/>
+        <element name="Location" positionX="-45" positionY="0" width="128" height="135"/>
     </elements>
 </model>
