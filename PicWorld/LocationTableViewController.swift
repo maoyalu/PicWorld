@@ -17,8 +17,18 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     var locationList = [Location]()
     var filteredLocationList = [Location]()
     weak var databaseController: DatabaseProtocol?
+    
+    @IBOutlet weak var sortButton: UIBarButtonItem!
+    var sortAscend = true
 
     @IBAction func sortList(_ sender: Any) {
+        if sortAscend {
+            sortButton.image = UIImage(named: "SortZtoA")
+            sortAscend = false
+        } else {
+            sortButton.image = UIImage(named: "SortAtoZ")
+            sortAscend = true
+        }
         locationList.reverse()
         filteredLocationList.reverse()
         tableView.reloadData()
@@ -126,19 +136,42 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     */
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            let location = filteredLocationList[indexPath.row]
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            let location = filteredLocationList[indexPath.row]
+//
+//            let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+//            let geoLocation = CLCircularRegion(center: coordinate, radius: 500, identifier: location.name!)
+//            geoLocation.notifyOnEntry = true
+//            locationManager.stopMonitoring(for: geoLocation)
+//
+//            databaseController?.deleteLocation(location: location)
+////            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//
+//    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: {(action, indexPath) in
+            let updateViewController = self.storyboard?.instantiateViewController(withIdentifier: "UpdateLocationViewController") as! UpdateLocationViewController
+            updateViewController.location = self.filteredLocationList[indexPath.row]
+            self.navigationController?.pushViewController(updateViewController, animated: true)
+        })
+        
+        
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: {(action, indexPath) in
+            let location = self.filteredLocationList[indexPath.row]
             
             let coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             let geoLocation = CLCircularRegion(center: coordinate, radius: 500, identifier: location.name!)
             geoLocation.notifyOnEntry = true
-            locationManager.stopMonitoring(for: geoLocation)
+            self.locationManager.stopMonitoring(for: geoLocation)
             
-            databaseController?.deleteLocation(location: location)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
+            self.databaseController?.deleteLocation(location: location)
+        })
+        
+        return [editAction, deleteAction]
     }
 
     /*

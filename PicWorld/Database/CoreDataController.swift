@@ -90,6 +90,24 @@ class CoreDataController: NSObject, DatabaseProtocol, NSFetchedResultsController
         saveContext()
     }
     
+    func updateLocation(location: Location, descript: String, iconFilename: String){
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "Location")
+        
+        let predicate = NSPredicate(format: "name = %@", location.name!)
+        fetchRequest.predicate = predicate
+        
+        do{
+            let target = try persistantContainer.viewContext.fetch(fetchRequest)
+            let updateObject = target[0] as! NSManagedObject
+            updateObject.setValue(descript, forKey: "descript")
+            updateObject.setValue(iconFilename, forKey: "iconFilename")
+            saveContext()
+            
+        } catch{
+            print(error)
+        }
+    }
+    
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
         
