@@ -18,6 +18,11 @@ class LocationTableViewController: UITableViewController, UISearchResultsUpdatin
     var filteredLocationList = [Location]()
     weak var databaseController: DatabaseProtocol?
 
+    @IBAction func sortList(_ sender: Any) {
+        locationList.reverse()
+        filteredLocationList.reverse()
+        tableView.reloadData()
+    }
     
     
     override func viewDidLoad() {

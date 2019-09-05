@@ -285,6 +285,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sights" id="RCH-lI-tqe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Sort" id="BaT-RH-uQc">
+                            <connections>
+                                <action selector="sortList:" destination="ymg-d8-OQl" id="2Fl-fc-kbv"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="camera" id="O31-yM-ZCN">
                             <connections>
                                 <segue destination="93C-9L-pRu" kind="show" identifier="NewLocationSegue" id="tYR-dO-GQa"/>
@@ -522,5 +527,6 @@
         <image name="List" width="32" height="32"/>
         <image name="Map" width="32" height="32"/>
         <image name="Musicals" width="32" height="32"/>
+        <image name="Sort" width="16" height="16"/>
     </resources>
 </document>
