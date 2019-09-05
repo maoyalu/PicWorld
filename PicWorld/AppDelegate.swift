@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         content.title = title
         content.body = body
         
-        //        let trigger = UNLocationNotificationTrigger(region: geoLocation, repeats: true)
+//                let trigger = UNLocationNotificationTrigger(region: geoLocation, repeats: true)
         let trigger =  UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
